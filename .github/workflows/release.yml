@@ -1,0 +1,19 @@
+name: release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: make release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          test -f "dist/$TAG/version.json" || { echo "dist/$TAG/version.json 없음"; exit 1; }
+          python3 -c "import json; m=json.load(open('dist/$TAG/version.json')); assert 'v'+m['version']=='$TAG', (m['version'], '$TAG')"
+          gh release create "$TAG" dist/$TAG/* --title "$TAG" --latest --notes "INNO_Check $TAG"
