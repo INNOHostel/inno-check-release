@@ -1,0 +1,10 @@
+{
+ "app": "INNO_Check",
+ "version": "47.1",
+ "exe_sha256": "563b6a26dc84ee5bba2300773e6187bd06ed5fee6a660494ea376e3e1899777f",
+ "exe_size": 28664490,
+ "parts": 4,
+ "enc_sha256": "8cfbc032a6f2d5e382b696120740a77e30cc0da534d6e37db71ab17a5fd8f498",
+ "enc_size": 28664514,
+ "built": "2026-11-25"
+}
